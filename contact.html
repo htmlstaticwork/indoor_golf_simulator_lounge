@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Indoor Golf Simulator Lounge</title>
+    <meta name="description" content="Get in touch with us for bookings, event inquiries, and more. We are here to help you enjoy the best indoor golf experience.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📞</text></svg>">
+</head>
+<body>
+
+    <!-- PAGE LOADER -->
+    <div id="page-loader">
+        <div class="loader-golf">
+            <div class="loader-ball"></div>
+            <div class="loader-text">CONTACT</div>
+            <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon">G</div>
+                GOLF<span>LOUNGE</span>
+            </a>
+
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index2.html" class="nav-link">Home 2</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="membership.html" class="nav-link">Membership</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="dashboard.html" class="nav-link dashboard-link">Dashboard</a>
+            </div>
+
+            <div class="nav-right">
+                <div class="nav-cta">
+                    <a href="login.html" class="btn btn-secondary">Login</a>
+                </div>
+                <div class="nav-icons">
+                    <button class="icon-btn dark-toggle" title="Toggle Dark Mode">🌙</button>
+                    <button class="icon-btn rtl-toggle" title="Toggle RTL">🌐</button>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE DRAWER -->
+    <div class="mobile-drawer">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index2.html" class="nav-link">Home 2</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="membership.html" class="nav-link">Membership</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <div class="mobile-drawer-cta">
+            <a href="login.html" class="btn btn-secondary btn-full">Login</a>
+            <div style="display: flex; gap: 8px; margin-top: 10px;">
+                <button class="icon-btn dark-toggle btn-full" style="flex: 1;">🌙 Theme</button>
+                <button class="icon-btn rtl-toggle btn-full" style="flex: 1;">🌐 RTL</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <section class="section" style="padding-top: 140px; background: var(--bg-alt); text-align: center;">
+        <div class="container reveal">
+            <span class="section-label">GET IN TOUCH</span>
+            <h1>We'd Love to Hear From You</h1>
+            <p style="max-width: 600px; margin: 0 auto;">Questions about booking, memberships, or private events? Our team is standing by.</p>
+        </div>
+    </section>
+
+    <!-- CONTACT AREA -->
+    <section class="section">
+        <div class="container reveal">
+            <div class="contact-grid">
+                <!-- Info Section -->
+                <div class="contact-info">
+                    <h2>Reach Out Directly</h2>
+                    <p>Stop by our lounge during business hours or give us a call.</p>
+                    
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div>
+                                <strong>Send Email</strong>
+                                <span>hello@golflounge.com</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div>
+                                <strong>Call Us</strong>
+                                <span>+1 (555) GOLF-NOW</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <strong>Lounge Location</strong>
+                                <span>123 Fairway Drive, Green City, GC 45678</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="map-embed">
+                        <!-- Placeholder Map -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102927.81845610058!2d-115.3150821!3d36.1251953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8c4383428d4eb%3A0x43e66580ef32416!2sLas%20Vegas%2C%20NV!5e0!3m2!1sen!2sus!4v1712035032537!5m2!1sen!2sus"
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Form Section -->
+                <div class="contact-form-wrap">
+                    <form id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="name">First Name</label>
+                                <input type="text" id="name" class="form-input" placeholder="Enter first name" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="lastname">Last Name</label>
+                                <input type="text" id="lastname" class="form-input" placeholder="Enter last name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address</label>
+                            <input type="email" id="email" class="form-input" placeholder="yourname@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="subject">Subject</label>
+                            <select id="subject" class="form-select" required>
+                                <option value="">Select Inquiry Reason</option>
+                                <option value="booking">Bay Booking</option>
+                                <option value="membership">Membership Plans</option>
+                                <option value="corporate">Corporate Event</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message">Message</label>
+                            <textarea id="message" class="form-textarea" placeholder="How can we help you?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full btn-lg">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-logo">
+                        <div class="logo-icon">G</div>
+                        GOLF<span>LOUNGE</span>
+                    </a>
+                    <p>Elevating the indoor golf experience with premium technology and luxury comfort. Play the world's best courses anytime.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-social" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="footer-social" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col" style="text-align: left;">
+                    <h4>QUICK LINKS</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index2.html">Home 2</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col" style="text-align: left;">
+                    <h4>SUPPORT</h4>
+                    <ul>
+                        <li><a href="membership.html">Membership</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col" style="text-align: center;">
+                    <h4>VISIT US</h4>
+                    <div class="glass-card" style="padding: 20px; margin-top: 16px;">
+                        <p style="font-size: 0.85rem; color: #fff; font-weight: 600;">123 Fairway Drive, Green City</p>
+                        <p style="font-size: 0.85rem; color: #fff; margin-top: 4px;">Open 7 Days a Week</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 Golf Simulator Lounge. All Rights Reserved.</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookie Settings</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership Plans | Indoor Golf Simulator Lounge</title>
+    <meta name="description" content="Choose the perfect plan for your golf style. Monthly, Quarterly, and Yearly options available.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💳</text></svg>">
+    <style>
+        .tab-pane { display: none; }
+        .tab-pane.active { display: grid; }
+        .tab-btn.active { background: var(--green); color: #fff; }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE LOADER -->
+    <div id="page-loader">
+        <div class="loader-golf">
+            <div class="loader-ball"></div>
+            <div class="loader-text">MEMBERSHIP</div>
+            <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon">G</div>
+                GOLF<span>LOUNGE</span>
+            </a>
+
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index2.html" class="nav-link">Home 2</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="membership.html" class="nav-link">Membership</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="dashboard.html" class="nav-link dashboard-link">Dashboard</a>
+            </div>
+
+            <div class="nav-right">
+                <div class="nav-cta">
+                    <a href="login.html" class="btn btn-secondary">Login</a>
+                </div>
+                <div class="nav-icons">
+                    <button class="icon-btn dark-toggle" title="Toggle Dark Mode">🌙</button>
+                    <button class="icon-btn rtl-toggle" title="Toggle RTL">🌐</button>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE DRAWER -->
+    <div class="mobile-drawer">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index2.html" class="nav-link">Home 2</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="membership.html" class="nav-link active">Membership</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+        <div class="mobile-drawer-cta">
+            <a href="login.html" class="btn btn-secondary btn-full">Login</a>
+            <div style="display: flex; gap: 8px; margin-top: 10px;">
+                <button class="icon-btn dark-toggle btn-full" style="flex: 1;">🌙 Theme</button>
+                <button class="icon-btn rtl-toggle btn-full" style="flex: 1;">🌐 RTL</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER SECTION -->
+    <section class="section" style="padding-top: 140px; background: var(--bg-alt); text-align: center;">
+        <div class="container reveal">
+            <span class="section-label">JOIN US</span>
+            <h1 style="margin-bottom: 16px;">Membership Plans</h1>
+            <p style="max-width: 600px; margin: 0 auto;">Invest in your game. Get exclusive access to world-class simulation and luxury amenities.</p>
+        </div>
+    </section>
+
+    <!-- PRICING TABS -->
+    <section class="section" data-tabs>
+        <div class="container">
+            <div class="section-center" style="margin-bottom: 40px;">
+                <div style="display: inline-flex; background: var(--bg-alt); padding: 6px; border-radius: 50px;">
+                    <button class="btn tab-btn active" data-tab="monthly" style="padding: 10px 24px;">Monthly</button>
+                    <button class="btn tab-btn" data-tab="quarterly" style="padding: 10px 24px;">Quarterly</button>
+                    <button class="btn tab-btn" data-tab="yearly" style="padding: 10px 24px;">Yearly</button>
+                </div>
+            </div>
+
+            <!-- Monthly Pane -->
+            <div class="pricing-grid tab-pane active reveal" data-tab-pane="monthly">
+                <div class="price-card">
+                    <div class="price-name">BASIC</div>
+                    <div class="price-amount">$99</div>
+                    <div class="price-period">per month</div>
+                    <div class="price-features">
+                        <div class="price-feature"><span class="check">✓</span> 5 Hours / month</div>
+                        <div class="price-feature"><span class="check">✓</span> 10% Pro Shop Discount</div>
+                        <div class="price-feature"><span class="check">×</span> Guest Access Paid</div>
+                    </div>
+                    <a href="contact.html" class="btn btn-primary btn-full">Join Now</a>
+                </div>
+                <div class="price-card featured">
+                    <div class="price-name">PRO</div>
+                    <div class="price-amount">$249</div>
+                    <div class="price-period">per month</div>
+                    <div class="price-features">
+                        <div class="price-feature"><span class="check">✓</span> 20 Hours / month</div>
+                        <div class="price-feature"><span class="check">✓</span> 2 Guest Passes</div>
+                        <div class="price-feature"><span class="check">✓</span> 20% F&B Discount</div>
+                    </div>
+                    <a href="contact.html" class="btn btn-outline-white btn-full">Join Now</a>
+                </div>
+                <div class="price-card">
+                    <div class="price-name">ELITE</div>
+                    <div class="price-amount">$499</div>
+                    <div class="price-period">per month</div>
+                    <div class="price-features">
+                        <div class="price-feature"><span class="check">✓</span> Unlimited Access</div>
+                        <div class="price-feature"><span class="check">✓</span> Unlimited Guests</div>
+                        <div class="price-feature"><span class="check">✓</span> VIP Lounge Entry</div>
+                    </div>
+                    <a href="contact.html" class="btn btn-primary btn-full">Join Now</a>
+                </div>
+            </div>
+
+            <!-- Quarterly Pane -->
+            <div class="pricing-grid tab-pane reveal" data-tab-pane="quarterly">
+                <div class="price-card">
+                    <div class="price-name">BASIC</div>
+                    <div class="price-amount">$269</div>
+                    <div class="price-period">per 3 months</div>
+                    <p style="font-size: 0.8rem; color: var(--green);">Save $28 vs monthly</p>
+                    <div class="price-features">
+                        <div class="price-feature"><span class="check">✓</span> All Basic Features</div>
+                    </div>
+                    <a href="contact.html" class="btn btn-primary btn-full">Join Now</a>
+                </div>
+                <div class="price-card featured">
+                    <div class="price-name">PRO</div>
+                    <div class="price-amount">$679</div>
+                    <div class="price-period">per 3 months</div>
+                    <p style="font-size: 0.8rem; color: #fff;">Save $68 vs monthly</p>
+                    <div class="price-features">
+                        <div class="price-feature"><span class="check">✓</span> All Pro Features</div>
+                    </div>
+                    <a href="contact.html" class="btn btn-outline-white btn-full">Join Now</a>
+                </div>
+                <div class="price-card">
+                    <div class="price-name">ELITE</div>
+                    <div class="price-amount">$1,349</div>
+                    <div class="price-period">per 3 months</div>
+                    <p style="font-size: 0.8rem; color: var(--green);">Save $148 vs monthly</p>
+                    <div class="price-features">
+                        <div class="price-feature"><span class="check">✓</span> All Elite Features</div>
+                    </div>
+                    <a href="contact.html" class="btn btn-primary btn-full">Join Now</a>
+                </div>
+            </div>
+
+            <!-- Yearly Pane -->
+            <div class="pricing-grid tab-pane reveal" data-tab-pane="yearly">
+                <div class="price-card">
+                    <div class="price-name">BASIC</div>
+                    <div class="price-amount">$999</div>
+                    <div class="price-period">per year</div>
+                    <p style="font-size: 0.8rem; color: var(--green);">Save $189 vs monthly</p>
+                    <div class="price-features">
+                        <div class="price-feature"><span class="check">✓</span> All Basic Features</div>
+                    </div>
+                    <a href="contact.html" class="btn btn-primary btn-full">Join Now</a>
+                </div>
+                <div class="price-card featured">
+                    <div class="price-name">PRO</div>
+                    <div class="price-amount">$2,499</div>
+                    <div class="price-period">per year</div>
+                    <p style="font-size: 0.8rem; color: #fff;">Save $489 vs monthly</p>
+                    <div class="price-features">
+                        <div class="price-feature"><span class="check">✓</span> All Pro Features</div>
+                    </div>
+                    <a href="contact.html" class="btn btn-outline-white btn-full">Join Now</a>
+                </div>
+                <div class="price-card">
+                    <div class="price-name">ELITE</div>
+                    <div class="price-amount">$4,999</div>
+                    <div class="price-period">per year</div>
+                    <p style="font-size: 0.8rem; color: var(--green);">Save $989 vs monthly</p>
+                    <div class="price-features">
+                        <div class="price-feature"><span class="check">✓</span> All Elite Features</div>
+                    </div>
+                    <a href="contact.html" class="btn btn-primary btn-full">Join Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" style="background: var(--bg-alt);">
+        <div class="container reveal">
+            <div class="section-center">
+                <h2>Plan Details & FAQ</h2>
+            </div>
+            <div class="why-grid" style="margin-top: 40px; max-width: 800px; margin-inline: auto;">
+                <div class="why-item">
+                    <div class="why-icon">❓</div>
+                    <div>
+                        <h4>How do I book?</h4>
+                        <p>Members get a dedicated dashboard for quick 1-click bookings.</p>
+                    </div>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">❓</div>
+                    <div>
+                        <h4>Can I upgrade?</h4>
+                        <p>Yes, you can upgrade your plan at any time through your settings.</p>
+                    </div>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">❓</div>
+                    <div>
+                        <h4>Is there a commitment?</h4>
+                        <p>Monthly plans are month-to-month. Quarterly and Yearly are prepaid.</p>
+                    </div>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">❓</div>
+                    <div>
+                        <h4>Pro Lesson included?</h4>
+                        <p>Pro and Elite plans includes one 30-min pro session monthly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-logo">
+                        <div class="logo-icon">G</div>
+                        GOLF<span>LOUNGE</span>
+                    </a>
+                    <p>Elevating the indoor golf experience with premium technology and luxury comfort. Play the world's best courses anytime.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-social" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="footer-social" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col" style="text-align: left;">
+                    <h4>QUICK LINKS</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index2.html">Home 2</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col" style="text-align: left;">
+                    <h4>SUPPORT</h4>
+                    <ul>
+                        <li><a href="membership.html">Membership</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col" style="text-align: center;">
+                    <h4>VISIT US</h4>
+                    <div class="glass-card" style="padding: 20px; margin-top: 16px;">
+                        <p style="font-size: 0.85rem; color: #fff; font-weight: 600;">123 Fairway Drive, Green City</p>
+                        <p style="font-size: 0.85rem; color: #fff; margin-top: 4px;">Open 7 Days a Week</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 Golf Simulator Lounge. All Rights Reserved.</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Cookie Settings</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

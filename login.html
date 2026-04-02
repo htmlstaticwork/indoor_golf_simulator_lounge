@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Indoor Golf Simulator Lounge</title>
+    <meta name="description" content="Log in to your Golf Lounge account to book bags, track stats, and manage your membership.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔐</text></svg>">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 24px;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%);
+        }
+        .login-card {
+            width: 100%;
+            max-width: 440px;
+            background: var(--card);
+            padding: 48px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        .login-logo {
+            margin-bottom: 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .social-login {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+        .social-btn-box {
+            flex: 1;
+            padding: 12px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+        .social-btn-box:hover {
+            border-color: var(--green);
+            background: var(--bg-alt);
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+        .pw-wrap { position: relative; }
+        .pw-toggle {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 1.1rem;
+            user-select: none;
+        }
+        .login-footer {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .login-footer a {
+            color: var(--green);
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE LOADER -->
+    <div id="page-loader">
+        <div class="loader-golf">
+            <div class="loader-ball"></div>
+            <div class="loader-text">SECURE LOGIN</div>
+            <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+        </div>
+    </div>
+
+    <div class="login-card reveal">
+        <div class="login-logo">
+            <a href="index.html" class="nav-logo" style="font-size: 1.6rem;">
+                <div class="logo-icon" style="width: 50px; height: 50px; border-radius: 14px;">G</div>
+                GOLF<span>LOUNGE</span>
+            </a>
+            <p style="margin-top: 8px;">Welcome back, please login</p>
+        </div>
+
+        <div class="social-login">
+            <div class="social-btn-box" title="Connect with Google">
+                <span>G</span> Google
+            </div>
+            <div class="social-btn-box" title="Connect with Apple">
+                <span></span> Apple
+            </div>
+        </div>
+
+        <div class="divider">OR LOGIN WITH EMAIL</div>
+
+        <form id="login-form" action="dashboard.html">
+            <div class="form-group" style="text-align: left;">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-input" placeholder="name@example.com" required>
+            </div>
+            
+            <div class="form-group" style="text-align: left;">
+                <label class="form-label">Password</label>
+                <div class="pw-wrap">
+                    <input type="password" class="form-input" placeholder="••••••••" required>
+                    <span class="pw-toggle">👁</span>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; font-size: 0.85rem;">
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                    <input type="checkbox" style="width: 16px; height: 16px; accent-color: var(--green);"> Remember Me
+                </label>
+                <a href="#" style="color: var(--green); font-weight: 600;">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full btn-lg">Login to Account</button>
+        </form>
+
+        <div class="login-footer">
+            Don't have an account? <a href="register.html">Create One</a>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
