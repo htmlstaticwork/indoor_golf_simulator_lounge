@@ -165,6 +165,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ── FAQ ACCORDION ──
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const header = item.querySelector('.faq-header');
+    header.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      
+      // Close all other items (Exclusive)
+      faqItems.forEach(other => {
+        other.classList.remove('active');
+        const otherBody = other.querySelector('.faq-body');
+        if (otherBody) otherBody.style.maxHeight = null;
+      });
+
+      // Toggle current item
+      if (!isActive) {
+        item.classList.add('active');
+        const body = item.querySelector('.faq-body');
+        if (body) body.style.maxHeight = body.scrollHeight + 'px';
+      }
+    });
+  });
+
   // ── BOOKING DATE DEFAULT ──
   const dateInputs = document.querySelectorAll('input[type="date"]');
   const today = new Date().toISOString().split('T')[0];
@@ -299,5 +322,24 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.font = `bold ${size * 0.18}px Outfit, sans-serif`;
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.fillText(percent + '%', cx, cy);
+  }
+  
+  // ── BACK TO TOP ──
+  const backToTop = document.getElementById('back-to-top');
+  if (backToTop) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
   }
 });

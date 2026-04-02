@@ -9,7 +9,7 @@
     <style>
         :root { --sidebar-w: 260px; --topbar-h: 72px; }
         body { display: flex; min-height: 100vh; background: var(--bg); overflow: hidden; }
-        .dashboard-sidebar { width: var(--sidebar-w); background: var(--card); border-right: 1px solid var(--border); display: flex; flex-direction: column; z-index: 100; transition: transform 0.3s ease; }
+        .dashboard-sidebar { width: var(--sidebar-w); height: 100vh; background: var(--card); border-right: 1px solid var(--border); display: flex; flex-direction: column; z-index: 100; transition: transform 0.3s ease; }
         .sidebar-header { height: var(--topbar-h); padding: 0 24px; display: flex; align-items: center; border-bottom: 1px solid var(--border); }
         .sidebar-menu { flex: 1; padding: 20px 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; }
         .sidebar-section-title { font-size: 0.7rem; font-weight: 800; color: var(--text-muted); opacity: 0.6; padding: 16px 16px 8px; letter-spacing: 0.1em; text-transform: uppercase; }
@@ -560,7 +560,9 @@
                     <form>
                         <div class="form-group"><label class="form-label">Profile Name</label><input type="text" class="form-input" value=""></div>
                         <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" value=""></div>
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <div class="form-actions" style="text-align: center; margin-top: 24px;">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -568,6 +570,9 @@
         </div>
     </main>
 
+    <button id="back-to-top" class="back-to-top" title="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
     <script src="js/main.js"></script>
     <script>
         // Wait for DOM to be fully loaded
