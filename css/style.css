@@ -979,29 +979,44 @@ footer {
 @keyframes loader-fill { from{width:0} to{width:100%} }
 
 /* ── RESPONSIVE ── */
-@media (max-width:1100px) {
+/* Tablet View (768px - 1024px) */
+@media (max-width:1024px) and (min-width:769px) {
+  .nav-menu, .nav-cta, .nav-icons { display:none; }
+  .hamburger { display:flex; }
+  .mobile-drawer { display:flex; }
+  h1 { font-size:2.2rem; }
+  h2 { font-size:1.8rem; }
+  .section { padding:80px 0; }
+  .stats-bar { grid-template-columns: repeat(2,1fr); margin:0 24px; margin-top:-40px; padding:32px; }
   .features-grid { grid-template-columns: repeat(2,1fr); }
+  .courses-grid { grid-template-columns: repeat(2,1fr); }
+  .testimonials-grid { grid-template-columns: repeat(2,1fr); }
+  .services-grid { grid-template-columns: repeat(2,1fr); }
   .team-grid { grid-template-columns: repeat(2,1fr); }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width:900px) {
-  .stats-bar { grid-template-columns: repeat(2,1fr); }
-  .courses-grid { grid-template-columns: 1fr 1fr; }
-  .pricing-grid { grid-template-columns: 1fr; max-width:400px; margin-inline:auto; }
+  .pricing-grid { grid-template-columns: repeat(2,1fr); max-width:800px; margin-inline:auto; }
   .pricing-grid .price-card.featured { transform:scale(1); }
-  .testimonials-grid { grid-template-columns: 1fr 1fr; }
+  .steps-grid { grid-template-columns: repeat(2,1fr); }
+  .steps-grid::before { display:none; }
+  .why-grid { grid-template-columns: repeat(2,1fr); }
   .split { grid-template-columns:1fr; gap:40px; }
   .contact-grid { grid-template-columns:1fr; }
-  .services-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: repeat(2,1fr); gap:32px; }
+  .footer-bottom { flex-direction:column; gap:12px; text-align:center; }
+  .cta-banner { padding:60px 32px; }
+  .form-row { grid-template-columns:1fr; }
+  .contact-form-wrap { padding:32px; }
+  .container { padding:0 32px; }
 }
-@media (max-width:1024px) {
+
+/* Mobile View (max-width: 768px) */
+@media (max-width:768px) {
   .nav-menu, .nav-cta, .nav-icons { display:none; }
   .hamburger { display:flex; }
   .mobile-drawer { display:flex; }
   h1 { font-size:2rem; }
   h2 { font-size:1.6rem; }
   .section { padding:64px 0; }
-  .stats-bar { grid-template-columns: 1fr 1fr; margin:0 16px; margin-top:-40px; padding:24px; }
+  .stats-bar { grid-template-columns: repeat(2,1fr); margin:0 16px; margin-top:-40px; padding:24px; }
   .courses-grid, .testimonials-grid, .features-grid, .steps-grid, .services-grid { grid-template-columns:1fr; }
   .steps-grid::before { display:none; }
   .why-grid { grid-template-columns:1fr; }
@@ -1010,10 +1025,58 @@ footer {
   .cta-banner { padding:48px 24px; }
   .form-row { grid-template-columns:1fr; }
   .contact-form-wrap { padding:24px; }
-  .team-grid { grid-template-columns: repeat(2,1fr); }
+  .team-grid { grid-template-columns:1fr; }
+  .pricing-grid { grid-template-columns: 1fr; max-width:400px; margin-inline:auto; }
+  .pricing-grid .price-card.featured { transform:scale(1); }
+  .container { padding:0 16px; }
 }
+
+/* Small Mobile (max-width: 480px) */
 @media (max-width:480px) {
   .container { padding:0 16px; }
   .pricing-grid { max-width:100%; }
   .team-grid { grid-template-columns:1fr; }
+  .stats-bar { grid-template-columns: 1fr; gap:16px; padding:20px; }
+}
+
+/* Center all content in mobile and tablet views */
+@media (max-width:1024px) {
+  .section-center { text-align: center; }
+  .footer-col { text-align: center !important; }
+  .footer-col ul { justify-content: center; }
+  .contact-info { text-align: center; }
+  .contact-items { justify-content: center; }
+  .hero-content { text-align: center; }
+  .hero-btns { justify-content: center; }
+  
+  /* Center all subheadings */
+  h2 { text-align: center !important; }
+  h3 { text-align: center !important; }
+  h4 { text-align: center !important; }
+  .section-title { text-align: center !important; }
+  .section-sub { text-align: center !important; margin: 0 auto; }
+  .feature-card h3 { text-align: center !important; }
+  .service-card h3 { text-align: center !important; }
+  .team-name { text-align: center !important; }
+  .team-role { text-align: center !important; }
+  .price-name { text-align: center !important; }
+  .contact-info h2 { text-align: center !important; }
+  .why-item h4 { text-align: center !important; }
+  .cta-banner h2 { text-align: center !important; }
+  .cta-banner p { text-align: center !important; }
+}
+
+/* Dashboard Responsive */
+@media (max-width:1024px) {
+  .dashboard-sidebar { transform: translateX(-100%); position: fixed; height: 100vh; z-index: 1000; }
+  .dashboard-sidebar.open { transform: translateX(0); }
+  .dashboard-main { margin-left: 0; }
+  .dash-grid { grid-template-columns: repeat(2,1fr); }
+  .viz-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width:768px) {
+  .dash-grid { grid-template-columns: 1fr; }
+  .topbar { padding: 0 16px; }
+  .content-scroll { padding: 16px; }
 }
