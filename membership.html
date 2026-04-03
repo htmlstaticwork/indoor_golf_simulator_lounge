@@ -12,6 +12,37 @@
         .tab-pane { display: none; }
         .tab-pane.active { display: grid; }
         .tab-btn.active { background: var(--green); color: #fff; }
+        
+        @media (max-width: 1024px) {
+            .tab-pane.active { 
+                display: grid !important;
+                grid-template-columns: 1fr !important; 
+                width: 100% !important;
+                max-width: 100% !important;
+                gap: 32px !important;
+                justify-items: center;
+            }
+            .tab-pane.active .price-card {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            .tab-pane.active .price-card.featured {
+                transform: scale(1) !important;
+            }
+            
+            /* Tab buttons: 2 on top, 1 centered below */
+            .section-center > div[style] {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                gap: 8px !important;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+            .section-center .tab-btn {
+                flex: 0 0 calc(50% - 8px) !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -45,7 +76,7 @@
 
             <div class="nav-right">
                 <div class="nav-cta">
-                    <a href="login.html" class="btn btn-secondary">Login</a>
+                    <a href="login.html" class="btn btn-secondary nav-btn">Login</a>
                 </div>
                 <div class="nav-icons">
                     <button class="icon-btn dark-toggle" title="Toggle Dark Mode">🌙</button>

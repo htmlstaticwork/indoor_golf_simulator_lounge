@@ -196,11 +196,17 @@ p { font-size: 1rem; color: var(--text-muted); }
   color: var(--green);
   border: 1.5px solid var(--green);
   border-radius: 50px;
-  padding: 7px 16px;
+  padding: 10px 20px;
+  font-size: 0.85rem;
 }
 .nav-link.dashboard-link:hover {
   background: var(--green);
   color: #fff;
+}
+
+.btn.nav-btn {
+  padding: 10px 20px;
+  font-size: 0.85rem;
 }
 
 .nav-right {
@@ -1080,23 +1086,35 @@ footer {
   /* Grid Adjustments - Tablet (2 Columns) */
   .features-grid, 
   .courses-grid, 
-  .services-grid, 
   .why-grid, 
   .footer-grid, 
   .stats-bar, 
   .team-grid, 
-  .pricing-grid, 
   .steps-grid,
   .dash-grid { 
     grid-template-columns: repeat(2, 1fr) !important; 
     gap: 20px;
   }
   
-  .pricing-grid > *:nth-child(3) {
-    grid-column: span 2;
-    justify-self: center;
-    width: 100%;
-    max-width: 400px;
+  /* Pricing & Services: Always 1 column on tablet and mobile */
+  .pricing-grid,
+  .services-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 32px !important;
+  }
+  
+  .pricing-grid .price-card,
+  .services-grid .service-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .price-card.featured {
+    transform: scale(1) !important;
   }
   
   .split { grid-template-columns: 1fr; gap: 40px; text-align: center; }
@@ -1129,15 +1147,41 @@ footer {
   
   .features-grid, 
   .courses-grid, 
-  .services-grid, 
   .why-grid, 
   .footer-grid, 
   .stats-bar, 
   .team-grid, 
-  .pricing-grid, 
   .steps-grid,
   .dash-grid { 
     grid-template-columns: 1fr !important; 
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 32px !important;
+  }
+
+  /* Specific Card Components Full Width */
+  .feature-card, .course-card, .service-card, .price-card, .team-card, .why-item {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Pricing and Services collapse earlier to 1-column as requested */
+  .pricing-grid, .services-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 auto;
+    gap: 40px !important; /* Increased spacing between cards */
+  }
+  
+  .price-card.featured {
+    transform: scale(1) !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
 
   .stats-bar { padding: 24px; margin-top: -30px; }

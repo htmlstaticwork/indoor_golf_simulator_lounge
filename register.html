@@ -31,7 +31,8 @@
         }
 
         .register-logo {
-            text-align: left;
+            display: flex;
+            justify-content: center;
             margin-bottom: 32px;
         }
 
@@ -76,12 +77,12 @@
         <form id="register-form" action="dashboard.html">
             <div class="form-group">
                 <label class="form-label" for="fullname">Full Name</label>
-                <input type="text" id="fullname" class="form-input" placeholder="e.g. John Doe" required>
+                <input type="text" id="fullname" class="form-input" placeholder="Full Name" required>
             </div>
 
             <div class="form-group">
                 <label class="form-label" for="email">Email Address</label>
-                <input type="email" id="email" class="form-input" placeholder="name@example.com" required>
+                <input type="email" id="email" class="form-input" placeholder="Email Address" required>
             </div>
 
             <div class="form-group">
@@ -95,7 +96,7 @@
                             <option>+91</option>
                         </select>
                     </div>
-                    <input type="tel" id="phone" class="form-input" placeholder="000-000-0000" style="flex: 1;"
+                    <input type="tel" id="phone" class="form-input" placeholder="Phone Number" style="flex: 1;"
                         required>
                 </div>
             </div>
@@ -103,7 +104,7 @@
             <div class="form-group">
                 <label class="form-label" for="password">Create Password</label>
                 <div style="position: relative;">
-                    <input type="password" id="password" class="form-input" placeholder="••••••••" required>
+                    <input type="password" id="password" class="form-input" placeholder="Password" required>
                     <span class="pw-toggle"
                         style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); cursor: pointer;">👁</span>
                 </div>
@@ -111,7 +112,7 @@
 
             <div class="form-group">
                 <label class="form-label" for="confirm-password">Confirm Password</label>
-                <input type="password" id="confirm-password" class="form-input" placeholder="••••••••" required>
+                <input type="password" id="confirm-password" class="form-input" placeholder="Confirm Password" required>
             </div>
 
             <div style="margin-bottom: 32px; font-size: 0.82rem; color: var(--text-muted);">
