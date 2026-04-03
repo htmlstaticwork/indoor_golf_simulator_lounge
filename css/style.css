@@ -369,16 +369,21 @@ p { font-size: 1rem; color: var(--text-muted); }
   border-color: var(--green);
 }
 .feature-icon {
-  width: 64px; height: 64px;
-  background: linear-gradient(135deg, rgba(22,163,74,0.12), rgba(22,163,74,0.04));
-  border-radius: 18px;
+  width: 80px; height: 80px;
+  background: var(--bg-alt);
+  border-radius: 20px;
   display: flex; align-items:center; justify-content:center;
-  font-size: 1.8rem;
-  margin: 0 auto 20px;
-  border: 1px solid rgba(22,163,74,0.2);
+  margin: 0 auto 24px;
+  border: 1px solid var(--border);
   transition: all var(--transition);
+  overflow: hidden;
 }
-.feature-card:hover .feature-icon { background: var(--green); transform: rotate(5deg) scale(1.1); }
+.feature-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.feature-card:hover .feature-icon { border-color: var(--green); transform: translateY(-5px) scale(1.05); }
 .feature-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
 .feature-card p { font-size: 0.88rem; }
 
@@ -1087,6 +1092,13 @@ footer {
     gap: 20px;
   }
   
+  .pricing-grid > *:nth-child(3) {
+    grid-column: span 2;
+    justify-self: center;
+    width: 100%;
+    max-width: 400px;
+  }
+  
   .split { grid-template-columns: 1fr; gap: 40px; text-align: center; }
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .footer-col { text-align: center !important; }
@@ -1111,7 +1123,7 @@ footer {
 }
 
 /* Mobile Specific (1 Column) */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   h1 { font-size: 2.2rem; }
   h2 { font-size: 1.8rem; }
   
@@ -1186,13 +1198,41 @@ footer {
   visibility: visible;
   transform: translateY(0);
 }
+
 .back-to-top:hover {
   background: var(--green-dark);
   transform: translateY(-5px);
   box-shadow: 0 12px 40px var(--green-glow);
 }
 
-@media (max-width: 768px) {
+/* ── CONTACT SOCIALS ── */
+.contact-socials {
+  display: flex;
+  gap: 12px;
+  margin: 20px 0 32px;
+}
+.contact-socials .social-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  transition: all var(--transition);
+}
+.contact-socials .social-icon:hover {
+  background: var(--green);
+  color: #fff;
+  border-color: var(--green);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px var(--green-glow);
+}
+
+@media (max-width: 600px) {
   .back-to-top {
     bottom: 24px;
     right: 24px;
