@@ -37,13 +37,23 @@
             flex-direction: row;
             justify-content: center;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
+            flex-wrap: nowrap;
+        }
+
+        .form-label {
+            flex: 0 0 120px;
+            margin-bottom: 0 !important;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .social-login {
             display: flex;
             gap: 12px;
             margin-bottom: 32px;
+            flex-wrap: nowrap;
         }
 
         .social-btn-box {
@@ -105,11 +115,30 @@
             border-top: 1px solid var(--border);
             font-size: 0.9rem;
             color: var(--text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .login-footer a {
             color: var(--green);
             font-weight: 700;
+        }
+
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 20px 16px;
+            }
+
+            .form-label {
+                flex: 0 0 80px;
+                font-size: 0.75rem;
+            }
+
+            .login-logo {
+                gap: 8px;
+            }
+            .form-group { gap: 8px; }
         }
     </style>
 </head>
@@ -148,32 +177,32 @@
         <div class="divider">OR LOGIN WITH EMAIL</div>
 
         <form id="login-form" action="dashboard.html">
-            <div class="form-group" style="text-align: left;">
-                <label class="form-label">Email Address</label>
-                <input type="email" class="form-input" placeholder="Email Address" required>
+            <div class="form-group" style="text-align: left; display: flex; align-items: center; gap: 12px;">
+                <label class="form-label" style="flex: 0 0 120px; margin-bottom: 0;">Email</label>
+                <input type="email" class="form-input" placeholder="Email Address" required style="flex: 1;">
             </div>
 
-            <div class="form-group" style="text-align: left;">
-                <label class="form-label">Password</label>
-                <div class="pw-wrap">
+            <div class="form-group" style="text-align: left; display: flex; align-items: center; gap: 12px;">
+                <label class="form-label" style="flex: 0 0 120px; margin-bottom: 0;">Password</label>
+                <div class="pw-wrap" style="flex: 1;">
                     <input type="password" class="form-input" placeholder="Password" required>
                     <span class="pw-toggle">👁</span>
                 </div>
             </div>
 
             <div
-                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; font-size: 0.85rem;">
-                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; font-size: 0.85rem; flex-wrap: nowrap; gap: 10px;">
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; white-space: nowrap;">
                     <input type="checkbox" style="width: 16px; height: 16px; accent-color: var(--green);"> Remember Me
                 </label>
-                <a href="#" style="color: var(--green); font-weight: 600;">Forgot Password?</a>
+                <a href="#" style="color: var(--green); font-weight: 600; white-space: nowrap;">Forgot Password?</a>
             </div>
 
             <button type="submit" class="btn btn-primary btn-full btn-lg">Login to Account</button>
         </form>
 
         <div class="login-footer">
-            Don't have an account? <a href="register.html">Create One</a>
+            Don't have an account? <a href="register.html">Sign up</a>
         </div>
     </div>
 

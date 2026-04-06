@@ -30,12 +30,6 @@
             border: 1px solid var(--border);
         }
 
-        .register-logo {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 32px;
-        }
-
         .register-footer {
             margin-top: 32px;
             padding-top: 24px;
@@ -43,6 +37,48 @@
             text-align: center;
             font-size: 0.9rem;
             color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            flex: 0 0 140px;
+            margin-bottom: 0 !important;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .register-logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 32px;
+            flex-wrap: nowrap;
+        }
+
+        @media (max-width: 480px) {
+            .register-card {
+                padding: 20px 16px;
+            }
+
+            .form-label {
+                flex: 0 0 80px;
+                font-size: 0.75rem;
+            }
+
+            .register-logo {
+                gap: 8px;
+            }
+
+            .form-group {
+                gap: 8px;
+            }
         }
 
         .register-footer a {
@@ -76,19 +112,19 @@
 
         <form id="register-form" action="dashboard.html">
             <div class="form-group">
-                <label class="form-label" for="fullname">Full Name</label>
-                <input type="text" id="fullname" class="form-input" placeholder="Full Name" required>
+                <label class="form-label" for="fullname">Name</label>
+                <input type="text" id="fullname" class="form-input" placeholder="Full Name" required style="flex: 1;">
             </div>
 
             <div class="form-group">
-                <label class="form-label" for="email">Email Address</label>
-                <input type="email" id="email" class="form-input" placeholder="Email Address" required>
+                <label class="form-label" for="email">Email</label>
+                <input type="email" id="email" class="form-input" placeholder="Email Address" required style="flex: 1;">
             </div>
 
             <div class="form-group">
-                <label class="form-label" for="phone">Phone Number</label>
-                <div style="display: flex; gap: 8px;">
-                    <div style="flex: 0 0 25%;">
+                <label class="form-label" for="phone">Phone</label>
+                <div style="display: flex; gap: 8px; flex: 1;">
+                    <div style="flex: 0 0 70px;">
                         <select class="form-select" style="padding: 13px;">
                             <option>+1</option>
                             <option>+44</option>
@@ -102,8 +138,8 @@
             </div>
 
             <div class="form-group">
-                <label class="form-label" for="password">Create Password</label>
-                <div style="position: relative;">
+                <label class="form-label" for="password">Password</label>
+                <div style="position: relative; flex: 1;">
                     <input type="password" id="password" class="form-input" placeholder="Password" required>
                     <span class="pw-toggle"
                         style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); cursor: pointer;">👁</span>
@@ -111,16 +147,17 @@
             </div>
 
             <div class="form-group">
-                <label class="form-label" for="confirm-password">Confirm Password</label>
-                <input type="password" id="confirm-password" class="form-input" placeholder="Confirm Password" required>
+                <label class="form-label" for="confirm-password">Confirm</label>
+                <input type="password" id="confirm-password" class="form-input" placeholder="Confirm Password" required
+                    style="flex: 1;">
             </div>
 
             <div style="margin-bottom: 32px; font-size: 0.82rem; color: var(--text-muted);">
-                <label style="display: flex; gap: 10px; cursor: pointer;">
+                <label style="display: flex; gap: 10px; cursor: pointer; flex-wrap: nowrap; align-items: center;">
                     <input type="checkbox"
                         style="width: 18px; height: 18px; accent-color: var(--green); flex-shrink: 0;" required>
-                    <span>I agree to the <a href="#" style="color: var(--green);">Terms of Service</a> and <a href="#"
-                            style="color: var(--green);">Privacy Policy</a>.</span>
+                    <span style="white-space: nowrap;">I agree to the <a href="#" style="color: var(--green);">Terms</a>
+                        and <a href="#" style="color: var(--green);">Privacy</a>.</span>
                 </label>
             </div>
 
@@ -128,7 +165,7 @@
         </form>
 
         <div class="register-footer">
-            Already have an account? <a href="login.html">Login Now</a>
+            Already have an account? <a href="login.html">Login in</a>
         </div>
     </div>
 

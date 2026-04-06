@@ -1076,16 +1076,15 @@ footer {
   p { text-align: center; margin-left: auto; margin-right: auto; }
   .btn-row, .hero-btns { justify-content: center; }
   
-  /* Image Scaling - No Cropping */
+  /* Image Scaling - Balanced Covering */
   img, .course-img, .service-img, .team-img, .feature-card img {
-    object-fit: contain !important;
+    object-fit: cover !important;
     background: rgba(0,0,0,0.03); /* Subtle background for empty space */
   }
   [data-theme="dark"] img { background: rgba(255,255,255,0.03); }
 
   /* Grid Adjustments - Tablet (2 Columns) */
   .features-grid, 
-  .courses-grid, 
   .why-grid, 
   .footer-grid, 
   .stats-bar, 
@@ -1094,6 +1093,18 @@ footer {
   .dash-grid { 
     grid-template-columns: repeat(2, 1fr) !important; 
     gap: 20px;
+  }
+
+  /* Courses Grid: Use Flex for centering the last odd card */
+  .courses-grid {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  .courses-grid > * {
+    width: calc(50% - 10px) !important;
+    flex: 0 0 auto;
   }
   
   /* Pricing & Services: Always 1 column on tablet and mobile */
@@ -1160,12 +1171,15 @@ footer {
   }
 
   /* Specific Card Components Full Width */
-  .feature-card, .course-card, .service-card, .price-card, .team-card, .why-item {
+  .feature-card, .course-card, .service-card, .price-card, .team-card, .why-item, .img-frame, .glass-card {
     width: 100% !important;
     max-width: 100% !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
     box-sizing: border-box !important;
+  }
+  .courses-grid > * {
+    width: 100% !important;
   }
 
   /* Pricing and Services collapse earlier to 1-column as requested */
