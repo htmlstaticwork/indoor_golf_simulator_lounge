@@ -39,14 +39,38 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── MOBILE MENU ──
   const hamburger = document.querySelector('.hamburger');
   const mobileDrawer = document.querySelector('.mobile-drawer');
+  const drawerCloseBtns = document.querySelectorAll('.drawer-close, #drawer-close-btn');
+  const drawerBackdrop = document.querySelector('.drawer-backdrop, #drawer-backdrop');
+
   if (hamburger && mobileDrawer) {
-    hamburger.addEventListener('click', () => {
+    hamburger.addEventListener('click', (e) => {
+      e.preventDefault();
       hamburger.classList.toggle('open');
       mobileDrawer.classList.toggle('open');
       document.body.style.overflow = mobileDrawer.classList.contains('open') ? 'hidden' : '';
     });
-    mobileDrawer.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
+
+    // Close on backdrop click
+    if (drawerBackdrop) {
+      drawerBackdrop.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileDrawer.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    }
+
+    // Close on separate close button click
+    drawerCloseBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileDrawer.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Close on link click
+    mobileDrawer.querySelectorAll('a, .drawer-link').forEach(link => {
+      link.addEventListener('click', () => {
         hamburger.classList.remove('open');
         mobileDrawer.classList.remove('open');
         document.body.style.overflow = '';
@@ -218,14 +242,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ── DASHBOARD NAV ACTIVE ──
-  document.querySelectorAll('.sidebar-link').forEach(link => {
+  const dashboardLinks = document.querySelectorAll('.sidebar-link, .drawer-link');
+  dashboardLinks.forEach(link => {
     link.addEventListener('click', function(e) {
-      document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-      const target = this.dataset.panel;
-      document.querySelectorAll('.dashboard-panel').forEach(p => p.classList.remove('active'));
-      const panel = document.getElementById(target);
-      if (panel) { e.preventDefault(); panel.classList.add('active'); }
+      if (this.dataset.panel) {
+        e.preventDefault();
+        
+        // Update active states for both sidebar and drawer links
+        dashboardLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Also update any links that share the same panel data
+        const target = this.dataset.panel;
+        document.querySelectorAll(`[data-panel="${target}"]`).forEach(l => l.classList.add('active'));
+
+        // Switch panels
+        document.querySelectorAll('.dashboard-panel').forEach(p => p.classList.remove('active'));
+        const panel = document.getElementById(target);
+        if (panel) { panel.classList.add('active'); }
+      }
     });
   });
 
