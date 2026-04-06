@@ -41,18 +41,14 @@
         }
 
         .form-group {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
+            display: block;
+            margin-bottom: 24px;
         }
 
         .form-label {
-            flex: 0 0 140px;
-            margin-bottom: 0 !important;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
 
         .register-logo {
@@ -113,34 +109,34 @@
         <form id="register-form" action="dashboard.html">
             <div class="form-group">
                 <label class="form-label" for="fullname">Name</label>
-                <input type="text" id="fullname" class="form-input" placeholder="Full Name" required style="flex: 1;">
+                <input type="text" id="fullname" class="form-input" placeholder="Full Name" required style="width: 100%;">
             </div>
 
             <div class="form-group">
                 <label class="form-label" for="email">Email</label>
-                <input type="email" id="email" class="form-input" placeholder="Email Address" required style="flex: 1;">
+                <input type="email" id="email" class="form-input" placeholder="Email Address" required style="width: 100%;">
             </div>
 
             <div class="form-group">
                 <label class="form-label" for="phone">Phone</label>
-                <div style="display: flex; gap: 8px; flex: 1;">
+                <div style="display: flex; gap: 8px; width: 100%;">
                     <div style="flex: 0 0 70px;">
-                        <select class="form-select" style="padding: 13px;">
+                        <select class="form-select" style="padding: 13px; width: 100%;">
                             <option>+1</option>
                             <option>+44</option>
                             <option>+61</option>
                             <option>+91</option>
                         </select>
                     </div>
-                    <input type="tel" id="phone" class="form-input" placeholder="Phone Number" style="flex: 1;"
+                    <input type="tel" id="phone" class="form-input" placeholder="Phone Number" style="flex: 1; width: 100%;"
                         required>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="form-label" for="password">Password</label>
-                <div style="position: relative; flex: 1;">
-                    <input type="password" id="password" class="form-input" placeholder="Password" required>
+                <div style="position: relative; width: 100%;">
+                    <input type="password" id="password" class="form-input" placeholder="Password" required style="width: 100%;">
                     <span class="pw-toggle"
                         style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); cursor: pointer;">👁</span>
                 </div>
@@ -149,7 +145,7 @@
             <div class="form-group">
                 <label class="form-label" for="confirm-password">Confirm</label>
                 <input type="password" id="confirm-password" class="form-input" placeholder="Confirm Password" required
-                    style="flex: 1;">
+                    style="width: 100%;">
             </div>
 
             <div style="margin-bottom: 32px; font-size: 0.82rem; color: var(--text-muted);">
@@ -161,7 +157,7 @@
                 </label>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-full btn-lg">Create Account</button>
+            <button type="submit" class="btn btn-primary btn-full btn-lg" style="width: 100%;">Create Account</button>
         </form>
 
         <div class="register-footer">
