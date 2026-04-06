@@ -157,9 +157,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const group = btn.closest('[data-tabs]');
       if (!group) return;
       const target = btn.dataset.tab;
+
+      // Remove .active from all buttons and plan groups (tab panes)
       group.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      group.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+      group.querySelectorAll('.plan-group, .tab-pane').forEach(p => p.classList.remove('active'));
+
+      // Add .active to clicked button
       btn.classList.add('active');
+
+      // Add .active to target plan group
       const pane = group.querySelector(`[data-tab-pane="${target}"]`);
       if (pane) pane.classList.add('active');
     });

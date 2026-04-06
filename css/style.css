@@ -557,6 +557,23 @@ p { font-size: 1rem; color: var(--text-muted); }
 .price-feature .check { color: var(--green); font-weight: 700; font-size: 1rem; }
 .price-card.featured .price-feature .check { color: #4ADE80; }
 
+/* Membership Plan Visibility - Mobile Fix */
+.plan-group { 
+  display: none; 
+}
+.plan-group.active { 
+  display: grid !important; 
+}
+.plan-group:not(.active) { 
+  display: none !important; 
+}
+
+@media (min-width: 1025px) {
+  .plan-group.active {
+    display: grid !important;
+  }
+}
+
 /* ── TESTIMONIALS ── */
 .testimonials-grid {
   display: grid;
@@ -1108,7 +1125,7 @@ footer {
   }
   
   /* Pricing & Services: Always 1 column on tablet and mobile */
-  .pricing-grid,
+  .pricing-grid.active,
   .services-grid {
     display: grid !important;
     grid-template-columns: 1fr !important;
