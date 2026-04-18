@@ -1,58 +1,252 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Member Dashboard | Golf Simulator Lounge</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%2316A34A%22/><circle cx=%2250%22 cy=%2250%22 r=%2210%22 fill=%22white%22/></svg>">
     <style>
-        :root { --sidebar-w: 260px; --topbar-h: 72px; }
-        body { display: flex; min-height: 100vh; background: var(--bg); overflow: hidden; }
-        .dashboard-sidebar { width: var(--sidebar-w); height: 100vh; background: var(--card); border-right: 1px solid var(--border); display: flex; flex-direction: column; z-index: 100; transition: transform 0.3s ease; }
-        .sidebar-header { height: var(--topbar-h); padding: 0 24px; display: flex; align-items: center; border-bottom: 1px solid var(--border); }
-        .sidebar-menu { flex: 1; padding: 20px 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; }
-        .sidebar-section-title { font-size: 0.7rem; font-weight: 800; color: var(--text-muted); opacity: 0.6; padding: 16px 16px 8px; letter-spacing: 0.1em; text-transform: uppercase; }
-        .sidebar-link { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 600; color: var(--text-muted); transition: all 0.3s ease; cursor: pointer; }
-        .sidebar-link:hover, .sidebar-link.active { background: rgba(22,163,74,0.1); color: var(--green); }
-        .dashboard-main { flex: 1; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
-        .topbar { height: var(--topbar-h); background: var(--card); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; }
-        .content-scroll { flex: 1; overflow-y: auto; padding: 32px; background: var(--bg-alt); }
-        .dashboard-panel { display: none; }
-        .dashboard-panel.active { display: block; animation: fadeIn 0.4s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .dash-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 32px; }
-        .dash-card { background: var(--card); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border); }
-        .viz-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 32px; }
-        .viz-box { background: var(--card); padding: 24px; border-radius: var(--radius); border: 1px solid var(--border); margin-bottom: 24px; }
-        .recent-table { width: 100%; border-collapse: collapse; }
-        .recent-table th { text-align: left; padding: 12px 16px; font-size: 0.75rem; color: var(--text-muted); border-bottom: 1px solid var(--border); }
-        .recent-table td { padding: 16px; font-size: 0.9rem; border-bottom: 1px solid var(--border); }
-        .notif-item { display: flex; gap: 16px; padding: 16px; border-bottom: 1px solid var(--border); transition: background 0.3s; cursor: pointer; }
-        .notif-item:hover { background: var(--bg-alt); }
-        .notif-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.2rem; }
-        
+        :root {
+            --sidebar-w: 260px;
+            --topbar-h: 72px;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background: var(--bg);
+            overflow: hidden;
+        }
+
+        .dashboard-sidebar {
+            width: var(--sidebar-w);
+            height: 100vh;
+            background: var(--card);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-header {
+            height: var(--topbar-h);
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .sidebar-menu {
+            flex: 1;
+            padding: 20px 12px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .sidebar-section-title {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            padding: 16px 16px 8px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .sidebar-link:hover,
+        .sidebar-link.active {
+            background: rgba(22, 163, 74, 0.1);
+            color: var(--green);
+        }
+
+        .dashboard-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .topbar {
+            height: var(--topbar-h);
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+        }
+
+        .content-scroll {
+            flex: 1;
+            overflow-y: auto;
+            padding: 32px;
+            background: var(--bg-alt);
+        }
+
+        .dashboard-panel {
+            display: none;
+        }
+
+        .dashboard-panel.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dash-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .dash-card {
+            background: var(--card);
+            padding: 24px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .viz-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .viz-box {
+            background: var(--card);
+            padding: 24px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            margin-bottom: 24px;
+        }
+
+        .recent-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .recent-table th {
+            text-align: left;
+            padding: 12px 16px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .recent-table td {
+            padding: 16px;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .notif-item {
+            display: flex;
+            gap: 16px;
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .notif-item:hover {
+            background: var(--bg-alt);
+        }
+
+        .notif-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
         /* Hamburger Menu Styles */
-        .hamburger { display: none; flex-direction: column; cursor: pointer; padding: 12px; border-radius: 8px; transition: all 0.3s ease; }
-        .hamburger:hover { background: rgba(22,163,74,0.1); }
-        .hamburger span { width: 25px; height: 3px; background: var(--text); margin: 3px 0; transition: 0.3s; border-radius: 2px; }
-        .hamburger:hover span { background: var(--green); }
-        .hamburger:active { transform: scale(0.95); }
-        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger:hover {
+            background: rgba(22, 163, 74, 0.1);
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--text);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .hamburger:hover span {
+            background: var(--green);
+        }
+
+        .hamburger:active {
+            transform: scale(0.95);
+        }
+
         /* Mobile Drawer Styles */
-        .mobile-drawer { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100vw; 
-            height: 100vh; 
-            z-index: 2000; 
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 2000;
             pointer-events: none;
             transition: all 0.3s ease;
         }
-        .mobile-drawer.open { 
+
+        .mobile-drawer.open {
             pointer-events: all;
         }
+
         .drawer-backdrop {
             position: absolute;
             top: 0;
@@ -64,56 +258,66 @@
             transition: opacity 0.3s ease;
             pointer-events: none;
         }
+
         .mobile-drawer.open .drawer-backdrop {
             opacity: 1;
             pointer-events: all;
         }
+
         .drawer-content {
             position: absolute;
             top: 0;
             left: -100%;
-            width: 320px; 
-            height: 100vh; 
-            background: var(--card); 
-            border-right: 1px solid var(--border); 
-            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            width: 320px;
+            height: 100vh;
+            background: var(--card);
+            border-right: 1px solid var(--border);
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
             overflow-y: auto;
             transition: left 0.3s ease;
         }
+
         .mobile-drawer.open .drawer-content {
             left: 0;
         }
-        .drawer-header { 
-            padding: 20px; 
-            border-bottom: 1px solid var(--border); 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
+
+        .drawer-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             background: var(--bg-alt);
         }
-        .drawer-close { 
-            background: none; 
-            border: none; 
-            color: var(--text); 
-            font-size: 1.5rem; 
-            cursor: pointer; 
-            padding: 5px; 
+
+        .drawer-close {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
             border-radius: 50%;
-            width: 32px; 
-            height: 32px; 
-            display: flex; 
-            align-items: center; 
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
             justify-content: center;
         }
-        .drawer-close:hover { background: var(--bg); color: var(--green); }
-        
+
+        .drawer-close:hover {
+            background: var(--bg);
+            color: var(--green);
+        }
+
         /* User Profile Section */
-        .user-profile-section { 
-            padding: 20px; 
-            border-bottom: 1px solid var(--border); 
+        .user-profile-section {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
             background: var(--bg-alt);
             text-align: center;
         }
+
         .user-actions .icon-btn {
             width: 40px;
             height: 40px;
@@ -127,198 +331,334 @@
             transition: all 0.3s ease;
             font-size: 1.1rem;
         }
+
         .user-actions .icon-btn:hover {
-            background: rgba(22,163,74,0.1);
+            background: rgba(22, 163, 74, 0.1);
             color: var(--green);
         }
-        
-        /* Slider Styles */
-        .slider-section { 
-            padding: 20px; 
-            border-bottom: 1px solid var(--border); 
-            background: var(--bg);
-        }
-        .slider-section h4 { 
-            margin: 0 0 16px 0; 
-            font-size: 0.9rem; 
-            color: var(--text-muted); 
-            text-transform: uppercase; 
-            letter-spacing: 0.05em; 
-        }
-        .stats-slider { 
-            position: relative; 
-            height: 120px; 
-            overflow: hidden; 
-            border-radius: var(--radius); 
-            background: var(--card); 
+
+        /* Profile Panel Styles */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 32px;
+            background: var(--card);
+            padding: 32px;
+            border-radius: var(--radius);
             border: 1px solid var(--border);
         }
-        .slide { 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            opacity: 0; 
-            transition: opacity 0.5s ease; 
+
+        .profile-avatar-large {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #fff;
+            border: 4px solid var(--border);
+            overflow: hidden;
         }
-        .slide.active { opacity: 1; }
-        .stat-item { 
-            text-align: center; 
-            padding: 20px; 
+
+        .profile-info h2 {
+            margin: 0;
+            font-size: 1.8rem;
         }
-        .stat-number { 
-            display: block; 
-            font-size: 2.5rem; 
-            font-weight: 800; 
-            color: var(--green); 
-            line-height: 1; 
+
+        .profile-info p {
+            color: var(--text-muted);
+            margin: 4px 0 12px;
         }
-        .stat-label { 
-            display: block; 
-            font-size: 0.8rem; 
-            color: var(--text-muted); 
-            margin-top: 8px; 
-            text-transform: uppercase; 
-            letter-spacing: 0.05em; 
+
+        .profile-stats {
+            display: flex;
+            gap: 24px;
         }
-        .slider-dots { 
-            display: flex; 
-            justify-content: center; 
-            gap: 8px; 
-            margin-top: 12px; 
+
+        .profile-stat-item {
+            text-align: center;
         }
-        .dot { 
-            width: 8px; 
-            height: 8px; 
-            border-radius: 50%; 
-            background: var(--border); 
-            cursor: pointer; 
-            transition: all 0.3s ease; 
+
+        .profile-stat-value {
+            display: block;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--green);
         }
-        .dot.active { 
-            background: var(--green); 
-            width: 24px; 
-            border-radius: 4px; 
+
+        .profile-stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
         }
-        
+
+        .welcome-sentence h2 {
+            margin-bottom: 0;
+            font-size: 1.5rem;
+        }
+
+        .welcome-sentence p {
+            font-weight: 500;
+        }
+
+        /* Slider Styles */
+        .slider-section {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            background: var(--bg);
+        }
+
+        .slider-section h4 {
+            margin: 0 0 16px 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .stats-slider {
+            position: relative;
+            height: 120px;
+            overflow: hidden;
+            border-radius: var(--radius);
+            background: var(--card);
+            border: 1px solid var(--border);
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--green);
+            line-height: 1;
+        }
+
+        .stat-label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--green);
+            width: 24px;
+            border-radius: 4px;
+        }
+
         /* Drawer Menu */
-        .drawer-menu { 
-            padding: 20px 0; 
+        .drawer-menu {
+            padding: 20px 0;
         }
-        .drawer-link { 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            padding: 12px 20px; 
-            color: var(--text-muted); 
-            text-decoration: none; 
-            transition: all 0.3s ease; 
-            font-size: 0.9rem; 
+
+        .drawer-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
-        .drawer-link:hover { 
-            background: rgba(22,163,74,0.1); 
-            color: var(--green); 
+
+        .drawer-link:hover {
+            background: rgba(22, 163, 74, 0.1);
+            color: var(--green);
         }
-        .drawer-link.active { 
-            background: rgba(22,163,74,0.1); 
-            color: var(--green); 
+
+        .drawer-link.active {
+            background: rgba(22, 163, 74, 0.1);
+            color: var(--green);
         }
+
         .drawer-footer {
             padding: 20px;
             border-top: 1px solid var(--border);
             margin-top: auto;
         }
+
         .logout-link {
             color: #ef4444 !important;
         }
+
         .logout-link:hover {
             background: rgba(239, 68, 68, 0.1) !important;
             color: #ef4444 !important;
         }
-        
+
         /* Responsive Hamburger */
         @media (max-width: 1024px) {
-            .dash-grid { grid-template-columns: repeat(2,1fr); gap: 16px; }
-            .viz-grid { grid-template-columns: 1fr; gap: 16px; }
-            .dash-card { padding: 16px; }
-            .viz-box { padding: 16px; }
-            
+            .dash-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .viz-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .dash-card {
+                padding: 16px;
+            }
+
+            .viz-box {
+                padding: 16px;
+            }
+
             /* Show hamburger on tablet */
-            .hamburger { 
-                display: flex !important; 
+            .hamburger {
+                display: flex !important;
                 cursor: pointer;
                 z-index: 1001;
             }
-            
+
             /* Hide topbar right elements on tablet */
-            .topbar > div:last-child {
-                display: none;
+            .topbar-right {
+                display: none !important;
             }
-            
+
             /* Ensure drawer is functional */
             .mobile-drawer {
                 z-index: 2000;
             }
         }
-        
+
         @media (max-width: 768px) {
-            .hamburger { 
-                display: flex !important; 
+            .hamburger {
+                display: flex !important;
                 cursor: pointer;
                 z-index: 1001;
             }
-            .dashboard-sidebar { transform: translateX(-100%); position: fixed; height: 100vh; z-index: 1000; }
-            .dashboard-sidebar.open { transform: translateX(0); }
-            .dashboard-main { margin-left: 0; }
-            
+
+            .dashboard-sidebar {
+                transform: translateX(-100%);
+                position: fixed;
+                height: 100vh;
+                z-index: 1000;
+            }
+
+            .dashboard-sidebar.open {
+                transform: translateX(0);
+            }
+
+            .dashboard-main {
+                margin-left: 0;
+            }
+
             /* Hide topbar right elements on mobile */
-            .topbar > div:last-child {
+            .topbar>div:last-child {
                 display: none;
             }
-            
+
             /* Mobile Dashboard Fixes */
-            .dash-grid { grid-template-columns: 1fr; gap: 12px; margin-bottom: 20px; }
-            .viz-grid { grid-template-columns: 1fr; gap: 12px; margin-bottom: 20px; }
-            .dash-card { padding: 12px; min-height: auto; }
-            .viz-box { padding: 12px; overflow-x: auto; }
-            
-            /* Mobile Tables */
-            .recent-table { 
-                font-size: 0.8rem; 
-                overflow-x: auto; 
-                display: block; 
+            .dash-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin-bottom: 20px;
             }
-            .recent-table thead, .recent-table tbody, .recent-table th, .recent-table td, .recent-table tr { 
-                display: block; 
+
+            .viz-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                margin-bottom: 20px;
+            }
+
+            .dash-card {
+                padding: 12px;
+                min-height: auto;
+            }
+
+            .viz-box {
+                padding: 12px;
+                overflow-x: auto;
+            }
+
+            /* Mobile Tables */
+            .recent-table {
+                font-size: 0.8rem;
+                overflow-x: auto;
+                display: block;
+            }
+
+            .recent-table thead,
+            .recent-table tbody,
+            .recent-table th,
+            .recent-table td,
+            .recent-table tr {
+                display: block;
                 width: 100%;
             }
-            .recent-table thead tr { 
-                position: absolute; 
-                top: -9999px; 
-                left: -9999px; 
+
+            .recent-table thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
             }
-            .recent-table tr { 
-                border: 1px solid var(--border); 
-                margin-bottom: 12px; 
-                border-radius: var(--radius); 
-                padding: 12px; 
+
+            .recent-table tr {
+                border: 1px solid var(--border);
+                margin-bottom: 12px;
+                border-radius: var(--radius);
+                padding: 12px;
                 background: var(--card);
                 display: block;
                 width: 100%;
                 box-sizing: border-box;
             }
-            .recent-table td { 
-                border: none; 
-                border-bottom: 1px solid var(--border); 
-                position: relative; 
-                padding-left: 50%; 
+
+            .recent-table td {
+                border: none;
+                border-bottom: 1px solid var(--border);
+                position: relative;
+                padding-left: 50%;
                 padding-bottom: 8px;
                 padding-top: 8px;
-                white-space: normal; 
+                white-space: normal;
                 text-align: left;
                 display: block;
                 width: 100%;
@@ -326,62 +666,90 @@
                 word-wrap: break-word;
                 overflow-wrap: break-word;
             }
-            .recent-table td:last-child { 
-                border-bottom: none; 
+
+            .recent-table td:last-child {
+                border-bottom: none;
             }
-            .recent-table td:before { 
-                position: absolute; 
-                top: 8px; 
-                left: 12px; 
-                width: 45%; 
-                padding-right: 10px; 
-                white-space: nowrap; 
-                text-align: left; 
-                font-weight: bold; 
+
+            .recent-table td:before {
+                position: absolute;
+                top: 8px;
+                left: 12px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
                 color: var(--text-muted);
                 content: attr(data-label);
                 display: block;
             }
+
             .recent-table td a {
                 display: inline-block;
                 word-wrap: break-word;
                 white-space: normal;
             }
-            
+
             /* Mobile Forms */
-            .form-input, .form-select { 
-                min-width: 0; 
-                width: 100%; 
-                font-size: 16px; /* Prevents zoom on iOS */
+            .form-input,
+            .form-select {
+                min-width: 0;
+                width: 100%;
+                font-size: 16px;
+                /* Prevents zoom on iOS */
             }
-            
+
             /* Mobile Charts */
-            canvas { 
-                max-width: 100%; 
-                height: auto !important; 
+            canvas {
+                max-width: 100%;
+                height: auto !important;
             }
-            
+
             /* Mobile Notifications */
-            .notif-item { 
-                padding: 12px; 
-                flex-direction: column; 
-                gap: 8px; 
+            .notif-item {
+                padding: 12px;
+                flex-direction: column;
+                gap: 8px;
             }
         }
-        
+
         @media (max-width: 480px) {
-            .container { padding: 0 12px; }
-            .topbar { padding: 12px; }
-            .dash-card { padding: 10px; }
-            .viz-box { padding: 10px; }
-            .stat-number { font-size: 2rem; }
-            .mobile-drawer { width: 280px; }
+            .container {
+                padding: 0 12px;
+            }
+
+            .topbar {
+                padding: 12px;
+            }
+
+            .dash-card {
+                padding: 10px;
+            }
+
+            .viz-box {
+                padding: 10px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .mobile-drawer {
+                width: 280px;
+            }
         }
     </style>
 </head>
+
 <body class="dashboard-page">
 
-    <div id="page-loader"><div class="loader-golf"><div class="loader-ball"></div><div class="loader-text">DASHBOARD</div></div></div>
+    <div id="page-loader">
+        <div class="loader-golf">
+            <div class="loader-ball"></div>
+            <div class="loader-text">DASHBOARD</div>
+        </div>
+    </div>
 
     <!-- SIDEBAR -->
     <aside class="dashboard-sidebar">
@@ -391,22 +759,32 @@
                 GOLF<span>LOUNGE</span>
             </a>
         </div>
-        
+
         <div class="sidebar-menu">
             <div class="sidebar-section-title">CLUB CORE</div>
-            <div class="sidebar-link active" data-panel="overview-panel"><span>📊</span> Dashboard</div>
-            <div class="sidebar-link" data-panel="booking-panel"><span>⛳</span> Book a Bay</div>
-            <div class="sidebar-link" data-panel="my-bookings-panel"><span>📅</span> My Bookings</div>
-            <div class="sidebar-link" data-panel="history-panel"><span>🕒</span> Game History</div>
+            <div class="sidebar-link active" data-panel="overview-panel"><span><i
+                        class="fa-solid fa-chart-simple"></i></span> Dashboard</div>
+            <div class="sidebar-link" data-panel="booking-panel"><span><i class="fa-solid fa-flag-checkered"></i></span>
+                Book a Bay</div>
+            <div class="sidebar-link" data-panel="my-bookings-panel"><span><i
+                        class="fa-solid fa-calendar-days"></i></span> My Bookings</div>
+            <div class="sidebar-link" data-panel="history-panel"><span><i
+                        class="fa-solid fa-clock-rotate-left"></i></span> Game History</div>
 
             <div class="sidebar-section-title">ACCOUNT & HELP</div>
-            <div class="sidebar-link" data-panel="membership-panel"><span>💳</span> Membership</div>
-            <div class="sidebar-link" data-panel="notifications-panel"><span>🔔</span> Notifications</div>
-            <div class="sidebar-link" data-panel="settings-panel"><span>⚙️</span> Settings</div>
+            <div class="sidebar-link" data-panel="profile-panel"><span><i class="fa-solid fa-user"></i></span> Profile
+            </div>
+            <div class="sidebar-link" data-panel="membership-panel"><span><i class="fa-solid fa-id-card"></i></span>
+                Membership</div>
+            <div class="sidebar-link" data-panel="notifications-panel"><span><i class="fa-solid fa-bell"></i></span>
+                Notifications</div>
+            <div class="sidebar-link" data-panel="settings-panel"><span><i class="fa-solid fa-gear"></i></span> Settings
+            </div>
         </div>
 
         <div class="sidebar-footer" style="padding: 20px; border-top: 1px solid var(--border);">
-            <a href="index.html" class="sidebar-link" style="color: #ef4444;"><span>🚪</span> Logout</a>
+            <a href="index.html" class="sidebar-link" style="color: #ef4444;"><span><i
+                        class="fa-solid fa-right-from-bracket"></i></span> Logout</a>
         </div>
     </aside>
 
@@ -419,10 +797,23 @@
                     <span></span>
                     <span></span>
                 </div>
-                <h2>Welcome back,</h2>
+                <div class="welcome-sentence">
+                    <h2>Welcome back, Alex!</h2>
+
+                </div>
             </div>
-            <div style="display: flex; gap: 12px; align-items: center;">
-                <button class="icon-btn dark-toggle">🌙</button>
+            <div class="topbar-right" style="display: flex; gap: 12px; align-items: center;">
+                <button class="icon-btn rtl-toggle" title="Toggle RTL"><i class="fa-solid fa-language"></i></button>
+                <button class="icon-btn dark-toggle" title="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
+                <div class="user-profile-trigger" data-panel="profile-panel"
+                    style="display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 4px 12px; border: 1px solid var(--border); border-radius: 40px; background: var(--bg-alt); transition: all 0.3s ease;">
+                    <div
+                        style="width: 32px; height: 32px; border-radius: 50%; background: var(--green); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; overflow: hidden;">
+                        <img src="img/avatar.png" alt="User Avatar"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <span style="font-size: 0.85rem; font-weight: 600;" class="hide-mobile">Alex Johnson</span>
+                </div>
             </div>
         </header>
 
@@ -432,45 +823,101 @@
             <div class="drawer-content">
                 <div class="drawer-header">
                     <a href="index.html" class="nav-logo" style="text-decoration: none;">
-                        <div class="logo-icon" style="width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: var(--green); color: #fff; font-weight: 800;">G</div>
+                        <div class="logo-icon"
+                            style="width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: var(--green); color: #fff; font-weight: 800;">
+                            G</div>
                         GOLF<span style="color: var(--green);">LOUNGE</span>
                     </a>
-                    <button class="drawer-close" id="drawer-close-btn">✕</button>
+                    <button class="drawer-close" id="drawer-close-btn"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <!-- USER PROFILE SECTION (FOR MOBILE/TABLET) -->
+                <div class="user-profile-section">
+                    <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--green); margin: 0 auto 15px; overflow: hidden; border: 3px solid var(--border);">
+                        <img src="img/avatar.png" alt="User Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3 style="margin: 0; font-size: 1.2rem;">Alex Johnson</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin: 5px 0 15px;">Gold Member</p>
+                    <div style="display: flex; justify-content: center; gap: 20px; padding: 12px; background: var(--bg); border-radius: 12px; border: 1px solid var(--border);">
+                        <div style="text-align: center;">
+                            <span style="display: block; font-weight: 800; color: var(--green); font-size: 1.1rem;">128</span>
+                            <span style="font-size: 0.6rem; text-transform: uppercase; color: var(--text-muted);">Games</span>
+                        </div>
+                        <div style="text-align: center;">
+                            <span style="display: block; font-weight: 800; color: var(--green); font-size: 1.1rem;">74.2</span>
+                            <span style="font-size: 0.6rem; text-transform: uppercase; color: var(--text-muted);">Avg</span>
+                        </div>
+                        <div style="text-align: center;">
+                            <span style="display: block; font-weight: 800; color: var(--green); font-size: 1.1rem;">+1.2</span>
+                            <span style="font-size: 0.6rem; text-transform: uppercase; color: var(--text-muted);">Hcp</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUICK SETTINGS -->
+                <div style="padding: 15px 20px; border-bottom: 1px solid var(--border); display: flex; gap: 10px; background: var(--bg-alt);">
+                    <button class="icon-btn dark-toggle btn-full" title="Toggle Theme" style="flex: 1; height: 44px; display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; color: var(--text);">
+                        <i class="fa-solid fa-moon"></i> Theme
+                    </button>
+                    <button class="icon-btn rtl-toggle btn-full" title="Toggle RTL" style="flex: 1; height: 44px; display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; color: var(--text);">
+                        <i class="fa-solid fa-language"></i> RTL
+                    </button>
                 </div>
 
                 <!-- MENU LINKS -->
                 <div class="drawer-menu">
-                    <a href="#" class="drawer-link" data-panel="overview-panel">📊 Dashboard</a>
-                    <a href="#" class="drawer-link" data-panel="booking-panel">⛳ Book a Bay</a>
-                    <a href="#" class="drawer-link" data-panel="my-bookings-panel">📅 My Bookings</a>
-                    <a href="#" class="drawer-link" data-panel="history-panel">🕒 Game History</a>
-                    <a href="#" class="drawer-link" data-panel="membership-panel">💳 Membership</a>
-                    <a href="#" class="drawer-link" data-panel="notifications-panel">🔔 Notifications</a>
-                    <a href="#" class="drawer-link" data-panel="settings-panel">⚙️ Settings</a>
+                    <a href="#" class="drawer-link" data-panel="overview-panel"><i class="fa-solid fa-chart-simple"></i>
+                        Dashboard</a>
+                    <a href="#" class="drawer-link" data-panel="profile-panel"><i class="fa-solid fa-user"></i>
+                        Profile</a>
+                    <a href="#" class="drawer-link" data-panel="booking-panel"><i
+                            class="fa-solid fa-flag-checkered"></i> Book a Bay</a>
+                    <a href="#" class="drawer-link" data-panel="my-bookings-panel"><i
+                            class="fa-solid fa-calendar-days"></i> My Bookings</a>
+                    <a href="#" class="drawer-link" data-panel="history-panel"><i
+                            class="fa-solid fa-clock-rotate-left"></i> Game History</a>
+                    <a href="#" class="drawer-link" data-panel="membership-panel"><i class="fa-solid fa-id-card"></i>
+                        Membership</a>
+                    <a href="#" class="drawer-link" data-panel="notifications-panel"><i class="fa-solid fa-bell"></i>
+                        Notifications</a>
+                    <a href="#" class="drawer-link" data-panel="settings-panel"><i class="fa-solid fa-gear"></i>
+                        Settings</a>
                 </div>
-                
+
                 <!-- LOGOUT -->
                 <div class="drawer-footer">
-                    <a href="index.html" class="drawer-link logout-link">🚪 Logout</a>
+                    <a href="index.html" class="drawer-link logout-link"><i class="fa-solid fa-right-from-bracket"></i>
+                        Logout</a>
                 </div>
             </div>
         </div>
 
         <div class="content-scroll">
-            
+
             <!-- 1. DASHBOARD OVERVIEW -->
             <div id="overview-panel" class="dashboard-panel active">
                 <div class="dash-grid">
-                    <div class="dash-card"><span style="font-size: 0.8rem;">TOTAL GAMES</span><h3>128</h3></div>
-                    <div class="dash-card"><span style="font-size: 0.8rem;">AVG SCORE</span><h3>74</h3></div>
-                    <div class="dash-card"><span style="font-size: 0.8rem;">BEST SCORE</span><h3>69</h3></div>
+                    <div class="dash-card"><span style="font-size: 0.8rem;">TOTAL GAMES</span>
+                        <h3>128</h3>
+                    </div>
+                    <div class="dash-card"><span style="font-size: 0.8rem;">AVG SCORE</span>
+                        <h3>74</h3>
+                    </div>
+                    <div class="dash-card"><span style="font-size: 0.8rem;">BEST SCORE</span>
+                        <h3>69</h3>
+                    </div>
                     <div class="dash-card" style="background: rgba(22,163,74,0.1); border-color: var(--green);">
-                        <span style="font-size: 0.8rem;">NEXT SESSION</span><h4>Apr 12 @ 4PM</h4>
+                        <span style="font-size: 0.8rem;">NEXT SESSION</span>
+                        <h4>Apr 12 @ 4PM</h4>
                     </div>
                 </div>
                 <div class="viz-grid">
-                    <div class="viz-box"><h3>Score Progress</h3><canvas id="score-chart"></canvas></div>
-                    <div class="viz-box" style="text-align: center;"><h3>Driving Accuracy</h3><canvas id="accuracy-chart"></canvas></div>
+                    <div class="viz-box">
+                        <h3>Score Progress</h3><canvas id="score-chart"></canvas>
+                    </div>
+                    <div class="viz-box" style="text-align: center;">
+                        <h3>Driving Accuracy</h3><canvas id="accuracy-chart"></canvas>
+                    </div>
                 </div>
             </div>
 
@@ -481,8 +928,14 @@
                     <form style="margin-top: 24px;">
                         <input type="date" class="form-input" style="margin-bottom: 16px;">
                         <div style="display: flex; gap: 12px; margin-bottom: 16px;">
-                            <select class="form-select" style="flex: 1;"><option>Standard Bay</option><option>VIP Suite</option></select>
-                            <select class="form-select" style="flex: 1;"><option>1 Hour</option><option>2 Hours</option></select>
+                            <select class="form-select" style="flex: 1;">
+                                <option>Standard Bay</option>
+                                <option>VIP Suite</option>
+                            </select>
+                            <select class="form-select" style="flex: 1;">
+                                <option>1 Hour</option>
+                                <option>2 Hours</option>
+                            </select>
                         </div>
                         <button type="submit" class="btn btn-primary btn-full">Check Availability</button>
                     </form>
@@ -494,11 +947,37 @@
                 <h3>My Upcoming Sessions</h3>
                 <div class="viz-box" style="margin-top: 24px;">
                     <table class="recent-table">
-                        <thead><tr><th>DATE</th><th>TIME</th><th>BAY</th><th>GUESTS</th><th>ACTION</th></tr></thead>
+                        <thead>
+                            <tr>
+                                <th>DATE</th>
+                                <th>TIME</th>
+                                <th>BAY</th>
+                                <th>GUESTS</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            <tr><td data-label="DATE">Apr 12, 2026</td><td data-label="TIME">4:00 PM</td><td data-label="BAY">VIP Suite 4</td><td data-label="GUESTS">3 Guests</td><td data-label="ACTION"><a href="#" style="color: #ef4444;">Cancel</a></td></tr>
-                            <tr><td data-label="DATE">Apr 10, 2026</td><td data-label="TIME">6:30 PM</td><td data-label="BAY">Standard Bay 2</td><td data-label="GUESTS">2 Guests</td><td data-label="ACTION"><a href="#" style="color: #ef4444;">Cancel</a></td></tr>
-                            <tr><td data-label="DATE">Apr 08, 2026</td><td data-label="TIME">2:00 PM</td><td data-label="BAY">VIP Suite 1</td><td data-label="GUESTS">4 Guests</td><td data-label="ACTION"><a href="#" style="color: #ef4444;">Cancel</a></td></tr>
+                            <tr>
+                                <td data-label="DATE">Apr 12, 2026</td>
+                                <td data-label="TIME">4:00 PM</td>
+                                <td data-label="BAY">VIP Suite 4</td>
+                                <td data-label="GUESTS">3 Guests</td>
+                                <td data-label="ACTION"><a href="#" style="color: #ef4444;">Cancel</a></td>
+                            </tr>
+                            <tr>
+                                <td data-label="DATE">Apr 10, 2026</td>
+                                <td data-label="TIME">6:30 PM</td>
+                                <td data-label="BAY">Standard Bay 2</td>
+                                <td data-label="GUESTS">2 Guests</td>
+                                <td data-label="ACTION"><a href="#" style="color: #ef4444;">Cancel</a></td>
+                            </tr>
+                            <tr>
+                                <td data-label="DATE">Apr 08, 2026</td>
+                                <td data-label="TIME">2:00 PM</td>
+                                <td data-label="BAY">VIP Suite 1</td>
+                                <td data-label="GUESTS">4 Guests</td>
+                                <td data-label="ACTION"><a href="#" style="color: #ef4444;">Cancel</a></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -509,11 +988,37 @@
                 <h3>Game History</h3>
                 <div class="viz-box" style="margin-top: 24px;">
                     <table class="recent-table">
-                        <thead><tr><th>DATE</th><th>COURSE</th><th>SCORE</th><th>HANDICAP</th><th>TYPE</th></tr></thead>
+                        <thead>
+                            <tr>
+                                <th>DATE</th>
+                                <th>COURSE</th>
+                                <th>SCORE</th>
+                                <th>HANDICAP</th>
+                                <th>TYPE</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            <tr><td data-label="DATE">Apr 02, 2026</td><td data-label="COURSE">Pebble Beach</td><td data-label="SCORE"><strong>71</strong></td><td data-label="HANDICAP">+1.2</td><td data-label="TYPE">Tournament</td></tr>
-                            <tr><td data-label="DATE">Mar 28, 2026</td><td data-label="COURSE">St Andrews</td><td data-label="SCORE"><strong>74</strong></td><td data-label="HANDICAP">+1.5</td><td data-label="TYPE">Practice</td></tr>
-                            <tr><td data-label="DATE">Mar 25, 2026</td><td data-label="COURSE">Augusta National</td><td data-label="SCORE"><strong>69</strong></td><td data-label="HANDICAP">+0.8</td><td data-label="TYPE">Competition</td></tr>
+                            <tr>
+                                <td data-label="DATE">Apr 02, 2026</td>
+                                <td data-label="COURSE">Pebble Beach</td>
+                                <td data-label="SCORE"><strong>71</strong></td>
+                                <td data-label="HANDICAP">+1.2</td>
+                                <td data-label="TYPE">Tournament</td>
+                            </tr>
+                            <tr>
+                                <td data-label="DATE">Mar 28, 2026</td>
+                                <td data-label="COURSE">St Andrews</td>
+                                <td data-label="SCORE"><strong>74</strong></td>
+                                <td data-label="HANDICAP">+1.5</td>
+                                <td data-label="TYPE">Practice</td>
+                            </tr>
+                            <tr>
+                                <td data-label="DATE">Mar 25, 2026</td>
+                                <td data-label="COURSE">Augusta National</td>
+                                <td data-label="SCORE"><strong>69</strong></td>
+                                <td data-label="HANDICAP">+0.8</td>
+                                <td data-label="TYPE">Competition</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -524,14 +1029,20 @@
                 <h3>My Membership Plan</h3>
                 <div class="viz-grid" style="margin-top: 24px;">
                     <div class="price-card featured" style="padding: 40px;">
-                        <span class="chip">PRO PLAN</span><h2>$249 / month</h2>
-                        <ul style="margin: 24px 0; color: rgba(255,255,255,0.8);"><li>✓ 20 Hours / month</li><li>✓ 2 Guest passes per session</li><li>✓ 20% Lounge Discount</li></ul>
+                        <span class="chip">PRO PLAN</span>
+                        <h2>$249 / month</h2>
+                        <ul style="margin: 24px 0; color: rgba(255,255,255,0.8);">
+                            <li><i class="fa-solid fa-check"></i> 20 Hours / month</li>
+                            <li><i class="fa-solid fa-check"></i> 2 Guest passes per session</li>
+                            <li><i class="fa-solid fa-check"></i> 20% Lounge Discount</li>
+                        </ul>
                         <button class="btn btn-outline-white btn-full">Manage Subscription</button>
                     </div>
                     <div class="viz-box">
                         <h3>Plan Benefits Use</h3>
                         <p style="margin-top: 12px; font-size: 0.9rem;">Hours used: 12 / 20</p>
-                        <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; margin-top: 8px;">
+                        <div
+                            style="width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; margin-top: 8px;">
                             <div style="width: 60%; height: 100%; background: var(--green); border-radius: 4px;"></div>
                         </div>
                     </div>
@@ -543,12 +1054,18 @@
                 <h3>Recent Alerts</h3>
                 <div class="viz-box" style="margin-top: 24px; padding: 0;">
                     <div class="notif-item">
-                        <div class="notif-icon">🎁</div>
-                        <div><strong>New Reward!</strong><p style="font-size: 0.8rem; color: var(--text-muted);">You've earned a $20 voucher for drinks.</p></div>
+                        <div class="notif-icon"><i class="fa-solid fa-gift"></i></div>
+                        <div><strong>New Reward!</strong>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">You've earned a $20 voucher for
+                                drinks.</p>
+                        </div>
                     </div>
                     <div class="notif-item">
-                        <div class="notif-icon">⛳</div>
-                        <div><strong>Upcoming Event</strong><p style="font-size: 0.8rem; color: var(--text-muted);">Spring Tournament starts in 3 days.</p></div>
+                        <div class="notif-icon"><i class="fa-solid fa-flag-checkered"></i></div>
+                        <div><strong>Upcoming Event</strong>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">Spring Tournament starts in 3 days.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -558,12 +1075,86 @@
                 <h3>Account Settings</h3>
                 <div class="viz-box" style="margin-top: 24px; max-width: 600px;">
                     <form>
-                        <div class="form-group"><label class="form-label">Profile Name</label><input type="text" class="form-input" value=""></div>
-                        <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" value=""></div>
+                        <div class="form-group"><label class="form-label">Profile Name</label><input type="text"
+                                class="form-input" value=""></div>
+                        <div class="form-group"><label class="form-label">Email</label><input type="email"
+                                class="form-input" value=""></div>
                         <div class="form-actions" style="text-align: center; margin-top: 24px;">
                             <button type="submit" class="btn btn-primary">Save Changes</button>
                         </div>
                     </form>
+                </div>
+            </div>
+
+            <!-- 10. PROFILE SECTION -->
+            <div id="profile-panel" class="dashboard-panel">
+                <div class="profile-header">
+                    <div class="profile-avatar-large">
+                        <img src="img/avatar.png" alt="Alex Johnson"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="profile-info">
+                        <h2>Alex Johnson</h2>
+                        <p>Gold Member since Oct 2025</p>
+                        <div class="profile-stats">
+                            <div class="profile-stat-item"><span class="profile-stat-value">128</span><span
+                                    class="profile-stat-label">Games</span></div>
+                            <div class="profile-stat-item"><span class="profile-stat-value">74.2</span><span
+                                    class="profile-stat-label">Avg Score</span></div>
+                            <div class="profile-stat-item"><span class="profile-stat-value">+1.2</span><span
+                                    class="profile-stat-label">Handicap</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="viz-grid">
+                    <div class="viz-box">
+                        <h3>Personal Details</h3>
+                        <div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div><label
+                                    style="display:block; color:var(--text-muted); font-size:0.8rem; margin-bottom:4px;">Full
+                                    Name</label>
+                                <p>Alex Johnson</p>
+                            </div>
+                            <div><label
+                                    style="display:block; color:var(--text-muted); font-size:0.8rem; margin-bottom:4px;">Email</label>
+                                <p>alex.j@example.com</p>
+                            </div>
+                            <div><label
+                                    style="display:block; color:var(--text-muted); font-size:0.8rem; margin-bottom:4px;">Phone</label>
+                                <p>+1 (555) 000-1234</p>
+                            </div>
+                            <div><label
+                                    style="display:block; color:var(--text-muted); font-size:0.8rem; margin-bottom:4px;">Location</label>
+                                <p>Green City, NC</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="viz-box">
+                        <h3>Club Achievements</h3>
+                        <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 12px;">
+                            <div
+                                style="display: flex; align-items: center; gap: 12px; padding: 10px; background: rgba(22,163,74,0.1); border-radius: 8px;">
+                                <span style="font-size: 1.2rem; color: var(--green);"><i
+                                        class="fa-solid fa-trophy"></i></span>
+                                <div>
+                                    <h4 style="margin:0; font-size:0.9rem;">Course Master</h4>
+                                    <p style="margin:0; font-size:0.75rem; color:var(--text-muted);">Played at 10+
+                                        different courses</p>
+                                </div>
+                            </div>
+                            <div
+                                style="display: flex; align-items: center; gap: 12px; padding: 10px; background: var(--bg-alt); border-radius: 8px;">
+                                <span style="font-size: 1.2rem; color: var(--green);"><i
+                                        class="fa-solid fa-fire-flame-curved"></i></span>
+                                <div>
+                                    <h4 style="margin:0; font-size:0.9rem;">Weekly Warrior</h4>
+                                    <p style="margin:0; font-size:0.75rem; color:var(--text-muted);">Played 4 weeks in a
+                                        row</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -575,4 +1166,5 @@
     </button>
     <script src="js/main.js"></script>
 </body>
+
 </html>

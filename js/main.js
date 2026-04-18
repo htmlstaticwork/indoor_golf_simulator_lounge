@@ -16,23 +16,23 @@ document.addEventListener('DOMContentLoaded', () => {
   html.setAttribute('data-theme', savedTheme);
   const toggleBtns = document.querySelectorAll('.dark-toggle');
   toggleBtns.forEach(btn => {
-    btn.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+    btn.innerHTML = savedTheme === 'dark' ? '<i class="fa-solid fa-moon"></i>' : '<i class="fa-solid fa-sun"></i>';
     btn.addEventListener('click', () => {
       const current = html.getAttribute('data-theme');
       const next = current === 'dark' ? 'light' : 'dark';
       html.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
-      toggleBtns.forEach(b => b.textContent = next === 'dark' ? '🌙' : '☀️');
+      toggleBtns.forEach(b => b.innerHTML = next === 'dark' ? '<i class="fa-solid fa-moon"></i>' : '<i class="fa-solid fa-sun"></i>');
     });
   });
 
   // ── RTL TOGGLE ──
   const rtlBtns = document.querySelectorAll('.rtl-toggle');
   rtlBtns.forEach(btn => {
+    btn.innerHTML = '<i class="fa-solid fa-language"></i>';
     btn.addEventListener('click', () => {
       const isRTL = document.body.dir === 'rtl';
       document.body.dir = isRTL ? 'ltr' : 'rtl';
-      btn.textContent = isRTL ? '🌐' : '🔄';
     });
   });
 
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const btn = form.querySelector('[type="submit"]');
       if (btn) {
         const original = btn.textContent;
-        btn.textContent = '✅ Sent!';
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Sent!';
         btn.disabled = true;
         setTimeout(() => { btn.textContent = original; btn.disabled = false; }, 3000);
       }
@@ -170,8 +170,14 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       const input = btn.previousElementSibling;
       if (!input) return;
-      if (input.type === 'password') { input.type = 'text'; btn.textContent = '🙈'; }
-      else { input.type = 'password'; btn.textContent = '👁'; }
+      if (input.type === 'password') { 
+        input.type = 'text'; 
+        btn.innerHTML = '<i class="fa-solid fa-eye-slash"></i>'; 
+      }
+      else { 
+        input.type = 'password'; 
+        btn.innerHTML = '<i class="fa-solid fa-eye"></i>'; 
+      }
     });
   });
 
@@ -242,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ── DASHBOARD NAV ACTIVE ──
-  const dashboardLinks = document.querySelectorAll('.sidebar-link, .drawer-link');
+  const dashboardLinks = document.querySelectorAll('.sidebar-link, .drawer-link, .user-profile-trigger');
   dashboardLinks.forEach(link => {
     link.addEventListener('click', function(e) {
       if (this.dataset.panel) {
