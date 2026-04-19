@@ -27,12 +27,30 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ── RTL TOGGLE ──
+  const savedRTL = localStorage.getItem('rtl') === 'true';
+  html.dir = savedRTL ? 'rtl' : 'ltr';
   const rtlBtns = document.querySelectorAll('.rtl-toggle');
+  
+  const updateRTLButtons = (isRTL) => {
+    rtlBtns.forEach(btn => {
+      const icon = '<i class="fa-solid fa-right-left"></i>';
+      if (btn.classList.contains('btn-full')) {
+        btn.innerHTML = `${icon} ${isRTL ? 'LTR View' : 'RTL View'}`;
+      } else {
+        btn.innerHTML = icon;
+      }
+    });
+  };
+
+  updateRTLButtons(savedRTL);
+
   rtlBtns.forEach(btn => {
-    btn.innerHTML = '<i class="fa-solid fa-language"></i>';
     btn.addEventListener('click', () => {
-      const isRTL = document.body.dir === 'rtl';
-      document.body.dir = isRTL ? 'ltr' : 'rtl';
+      const isRTL = html.dir === 'rtl';
+      const nextRTL = !isRTL;
+      html.dir = nextRTL ? 'rtl' : 'ltr';
+      localStorage.setItem('rtl', nextRTL);
+      updateRTLButtons(nextRTL);
     });
   });
 
