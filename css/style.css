@@ -1117,12 +1117,20 @@ footer {
   .features-grid, 
   .why-grid, 
   .footer-grid, 
-  .stats-bar, 
   .team-grid, 
   .steps-grid,
   .dash-grid { 
     grid-template-columns: repeat(2, 1fr) !important; 
     gap: 20px;
+  }
+  
+  /* Stats Bar - Centered in Tablet */
+  .stats-bar { 
+    grid-template-columns: repeat(2, 1fr) !important; 
+    gap: 20px;
+    max-width: 600px;
+    margin: -60px auto 0 !important;
+    padding: 28px 32px;
   }
 
   /* Courses Grid: Use Flex for centering the last odd card */
@@ -1190,7 +1198,6 @@ footer {
   .courses-grid, 
   .why-grid, 
   .footer-grid, 
-  .stats-bar, 
   .team-grid, 
   .steps-grid,
   .dash-grid { 
@@ -1198,6 +1205,16 @@ footer {
     width: 100% !important;
     max-width: 100% !important;
     gap: 32px !important;
+  }
+  
+  /* Stats Bar - Centered in Mobile */
+  .stats-bar { 
+    grid-template-columns: 1fr !important; 
+    width: 100% !important;
+    max-width: 400px !important;
+    margin: -60px auto 0 !important;
+    padding: 24px 28px !important;
+    gap: 24px !important;
   }
 
   /* Specific Card Components Full Width */
@@ -1245,7 +1262,13 @@ footer {
   .section { padding: 60px 0; } /* More compact for small mobiles */
   .container { padding: 0 16px; }
   .nav-inner { padding: 0 16px; } 
-  .stats-bar { grid-template-columns: 1fr !important; padding: 20px 16px; } 
+  .stats-bar { 
+    grid-template-columns: 1fr !important; 
+    max-width: 350px !important;
+    margin: -60px auto 0 !important;
+    padding: 20px 24px !important;
+    gap: 20px !important;
+  } 
 }
 
 /* Dashboard Specific Responsive */
